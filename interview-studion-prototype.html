@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f6f8">
+<title>Interview Studio · Scholar & Admin Portal</title>
+<style>
+:root{--ink:#172b40;--muted:#536579;--accent:#08776e;--paper:#fff;--base:#f4f6f8;--line:#dce3e9;--soft:#e9f5f2;--warn:#815b0c;--radius:12px;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--base);color:var(--ink);font:16px/1.6 "Segoe UI",Arial,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation;min-height:46px;border:1px solid var(--line);border-radius:8px;padding:10px 18px;background:white;color:var(--ink);font-weight:600;transition:background .15s,color .15s}button:hover{background:#edf2f5}button:disabled{opacity:.55;cursor:not-allowed}.primary{background:var(--accent);border-color:var(--accent);color:white}.primary:hover{background:#055e57}.quiet{background:transparent}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #1689c0;outline-offset:4px}a{color:var(--accent)}.skip{position:absolute;top:-100px;left:16px;background:white;padding:12px;z-index:10}.skip:focus{top:8px}[hidden]{display:none!important}
+.top{max-width:1280px;margin:auto;padding:24px 38px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;align-items:center;font-weight:750;letter-spacing:-.5px;font-size:21px}.logo{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;background:var(--ink);color:white}.top-note{color:var(--muted);font-size:14px}.shell{max-width:1280px;margin:36px auto 70px;padding:0 38px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:50px}aside{min-width:0}.subject{font-weight:700;line-height:1.35;font-size:22px;margin:16px 0}.tag{display:inline-block;background:var(--soft);color:#055e57;font-size:13px;padding:4px 10px;border-radius:6px}.muted{color:var(--muted)}.small{font-size:14px}.steps{list-style:none;padding:0;margin:32px 0}.steps li{display:flex;align-items:center;gap:12px;padding:12px 0;color:var(--muted)}.step-no{display:grid;place-items:center;width:29px;height:29px;border:1px solid #acbac6;border-radius:50%;font-size:13px}.steps li[aria-current=step]{color:var(--ink);font-weight:700}.steps li[aria-current=step] .step-no{background:var(--ink);color:white;border-color:var(--ink)}.aside-note{padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}main{min-width:0}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(32px,4vw,43px);line-height:1.17;letter-spacing:-1.2px;text-wrap:balance;margin-bottom:16px}h2{font-size:26px;line-height:1.4;letter-spacing:-.4px;text-wrap:balance}h3{font-size:18px}.lead{color:var(--muted);max-width:640px;margin-bottom:30px;font-size:17px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:30px}.facts{display:flex;gap:30px;border-top:1px solid var(--line);padding-top:20px;margin:25px 0 0}.facts strong{display:block;font-size:18px}.facts span{font-size:13px;color:var(--muted)}label{display:block;font-weight:600;margin-bottom:8px}input,textarea{border:1px solid #aebbc7;border-radius:8px;padding:12px 14px;background:white;color:var(--ink);width:100%;min-height:48px}textarea{resize:vertical;min-height:205px;line-height:1.7}input[readonly]{background:var(--base)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:26px}.help{font-size:13px;color:var(--muted);margin:8px 0 0}.actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.notice{border-left:3px solid #b4c9c4;padding:2px 0 2px 15px;color:var(--muted);font-size:14px;margin-top:24px}.check{display:flex;align-items:center;gap:10px;font-weight:400;font-size:14px;margin:22px 0}.check input{width:18px;height:18px;min-height:0;accent-color:var(--accent)}.error{color:#a12a32;font-size:14px}.session-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:12px}.progress{height:5px;background:#dce6e5;border-radius:4px;margin-bottom:30px}.progress>span{display:block;background:var(--accent);height:100%;border-radius:4px}.question-number{font-size:14px;color:var(--accent);font-weight:700;margin:0 0 14px}.question{font-size:clamp(23px,3vw,30px);min-height:85px}.voice{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:22px 0}.voice button{display:flex;gap:9px;align-items:center}.status{width:100%;color:var(--muted);font-size:14px;margin-top:3px;min-height:24px}.dot{display:inline-block;width:7px;height:7px;background:var(--accent);border-radius:50%;margin-right:7px}.answer-meta{display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:13px;margin:7px 0 22px}.footer-actions{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:22px}.report-hero{display:grid;grid-template-columns:170px minmax(0,1fr);gap:30px;align-items:center}.big-score{font-size:61px;letter-spacing:-3px;line-height:1.15;font-weight:750;font-variant-numeric:tabular-nums}.big-score small{font-size:20px;letter-spacing:0;color:var(--muted)}.result-stats{display:flex;gap:22px;padding-top:20px;border-top:1px solid var(--line);margin-top:24px;flex-wrap:wrap}.result-stats strong{display:block}.review{margin-top:32px}.review-head{display:flex;justify-content:space-between;align-items:center;gap:12px}details{background:white;border:1px solid var(--line);border-radius:9px;margin-bottom:12px;overflow-wrap:anywhere}summary{cursor:pointer;padding:18px;display:flex;align-items:center;gap:14px;list-style:none}summary::-webkit-details-marker{display:none}summary:before{content:'+';font-size:22px;color:var(--accent)}details[open] summary:before{content:'−'}summary .qtext{flex:1;font-weight:600}summary .qscore{white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700}.detail-content{padding:0 22px 22px}.answer-copy{white-space:pre-wrap;background:var(--base);padding:14px;border-radius:6px;font-size:14px}.concepts{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 18px}.concept{font-size:13px;border:1px solid var(--line);padding:3px 8px;border-radius:5px}.match{background:var(--soft);color:#055e57;border-color:#c1dfd5}.missing{background:#fff8e8;color:var(--warn);border-color:#e8d8b4}.end-note{font-size:13px;color:var(--muted);margin-top:26px}svg{width:18px;height:18px;flex-shrink:0}.report-actions{margin-top:25px}.question-map{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:22px}.question-map button{min-height:38px;padding:4px;font-size:13px}.question-map button.current{border:2px solid var(--accent);color:var(--accent)}.question-map button.answered{background:var(--soft)}
+@media(max-width:850px){.shell{grid-template-columns:1fr;gap:24px;margin-top:24px}aside .subject,aside .aside-note,aside .tag,aside>p,.question-map{display:none}.steps{display:flex;margin:0;gap:25px}.steps li{font-size:14px}.shell,.top{padding-left:22px;padding-right:22px}.top-note{display:none}}
+@media(max-width:540px){.shell{padding:0 16px}.panel{padding:22px 18px}.form-grid{grid-template-columns:1fr}.steps{gap:16px}.steps li{gap:6px;font-size:13px}.step-no{width:24px;height:24px}.report-hero{grid-template-columns:1fr;gap:15px}.facts{gap:22px}.footer-actions{flex-wrap:wrap}.footer-actions .actions{width:100%;justify-content:space-between}.review-head{align-items:flex-start}.question{min-height:0}.answer-meta{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{.top,aside,button,.skip{display:none!important}.shell{display:block;margin:0;padding:0}body{background:white}#report{display:block!important}#setup,#interview{display:none!important}.panel,details{break-inside:avoid}.detail-content{display:block!important}h1{font-size:28px}}
+
+.login-options{display:grid;grid-template-columns:1fr 1fr;gap:18px}.login-options .panel{padding:24px}.admin-nav{margin-bottom:22px}.question-edit textarea{min-height:110px}.report-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.report-row>div{flex:1;min-width:180px}.report-row p{margin-bottom:0}.report-row strong{white-space:nowrap}input[type=file]{font-size:14px}.subject{overflow-wrap:anywhere}
+@media(max-width:1050px){.login-options{grid-template-columns:1fr}}
+@media print{#login,#admin,#setup,#interview,#storageWarning{display:none!important}#report{display:block!important}}
+</style>
+<style>
+/* ---- Online proctoring (added) ---- */
+.proctor-setup{margin-bottom:18px}.proctor-steps{list-style:none;margin:18px 0;padding:0;display:grid;gap:12px}.proctor-steps li{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border:1px solid var(--line);border-radius:9px;padding:12px 14px}.proctor-steps .ps-text{flex:1;min-width:170px}.ps-state{font-size:14px;color:var(--muted)}.ps-state.ok{color:#055e57;font-weight:700}.ps-state.bad{color:#a12a32}#setupCam{width:120px;height:90px;object-fit:cover;border-radius:6px;background:#0d1b2a;transform:scaleX(-1)}
+.proctor-dock{position:fixed;right:16px;bottom:16px;width:210px;background:#0d1b2a;color:white;border-radius:12px;padding:8px;box-shadow:0 6px 24px rgba(0,0,0,.28);z-index:20;font-size:12px;line-height:1.4}.proctor-dock video{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;background:#000;transform:scaleX(-1)}.pd-row{display:flex;flex-wrap:wrap;gap:2px 10px;margin-top:6px}.pd-chip:before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:#2ecc8f;margin-right:5px}.pd-chip.bad:before{background:#ff6b6b}.pd-chip.idle:before{background:#9aa9b6}body.proctoring{padding-bottom:210px}.proctor-hidden{position:fixed;right:0;bottom:0;width:2px;height:2px;opacity:.01;pointer-events:none}
+.pwarns{position:fixed;top:0;left:0;right:0;z-index:40;display:grid}.pwarn{background:#a12a32;color:white;padding:12px 18px;text-align:center;font-weight:700;display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}.pwarn button{min-height:38px;padding:6px 14px}
+.psum{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px 26px;margin:18px 0 24px}.psum div{border-top:1px solid var(--line);padding-top:8px}.psum strong{display:block;font-size:18px}.psum span{font-size:13px;color:var(--muted)}
+.ptl{display:grid;grid-template-columns:80px 230px minmax(0,1fr);gap:4px 14px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}.ptl:first-child{border-top:0}.ptl .pt-time{font-variant-numeric:tabular-nums;color:var(--muted)}.ptl.warn .pt-type{color:#a12a32;font-weight:700}
+.shot-tools{display:flex;gap:14px;flex-wrap:wrap;align-items:end;margin:12px 0}.shot-tools div{min-width:130px}.shot-tools select{border:1px solid #aebbc7;border-radius:8px;padding:12px 14px;background:white;color:var(--ink);min-height:48px;font:inherit}
+.shot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}.shot{padding:0;min-height:0;overflow:hidden;text-align:left;display:block}.shot img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#e9eef2}.shot span{display:block;padding:6px 10px;font-size:13px;font-variant-numeric:tabular-nums}
+#shotDialog{border:0;border-radius:12px;padding:18px;width:min(96vw,1180px);max-height:96vh;color:var(--ink)}#shotDialog::backdrop{background:rgba(10,20,30,.72)}#shotImg{display:block;width:100%;max-height:68vh;object-fit:contain;background:#0d1b2a;border-radius:8px;margin:12px 0}
+@media(max-width:540px){.proctor-dock{width:140px;padding:5px;font-size:11px}body.proctoring{padding-bottom:170px}.ptl{grid-template-columns:1fr}#setupCam{width:100%;height:auto;aspect-ratio:4/3}}
+@media print{.proctor-dock,.pwarns,#shotDialog,.shot-tools{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top"><div class="brand"><span class="logo" aria-hidden="true">i</span>Interview Studio</div><div class="actions"><span id="roleLabel" class="small muted">Choose your portal</span><button id="logoutButton" hidden>Log out</button></div></header>
+<div class="shell"><aside aria-label="Session overview"><span class="tag" id="portalTag">Interview portal</span><h2 class="subject" id="sidebarSubject">Computer Organization</h2><p class="muted small" id="sidebarHelp">Your next interview starts here.</p><div id="questionMap" class="question-map" hidden aria-label="Question navigation"></div><div class="aside-note">Scores estimate keyword coverage. Expected answers are provided by your administrator.</div></aside>
+<main id="main" tabindex="-1">
+<p id="storageWarning" class="notice" role="status" hidden></p>
+<section id="login"><h1>Welcome to your<br>interview portal.</h1><p class="lead">Take your test or manage the question set and completed reports.</p><div class="login-options"><div class="panel"><span class="tag">For candidates</span><h2 style="margin-top:18px">Scholar login</h2><p class="small muted">Enter your details to begin the current test.</p><form id="scholarForm"><label for="candidate">Your name</label><input id="candidate" name="candidate" autocomplete="name" maxlength="120" required placeholder="e.g. Alex Morgan…"><label for="candidateId" style="margin-top:16px">Scholar ID <span class="muted small">(optional)</span></label><input id="candidateId" name="candidateId" autocomplete="off" maxlength="120" placeholder="e.g. CO-104…"><button class="primary" style="margin-top:22px">Log in as scholar</button></form></div><div class="panel"><span class="tag">For administrators</span><h2 style="margin-top:18px">Admin login</h2><p class="small muted">Edit questions, set expected answers, and review submitted tests.</p><form id="adminLoginForm"><label for="adminPassword">Admin password</label><input id="adminPassword" type="password" name="adminPassword" autocomplete="current-password" required><p id="loginError" class="error" role="alert" hidden></p><button class="primary" style="margin-top:22px">Log in as admin</button></form></div></div><p class="notice">This is a local, single-file application. The admin password is a convenience gate, not secure authentication. Data is saved in this browser; use HTML export or report transfer to carry it elsewhere.</p></section>
+<section id="setup" hidden><h1 id="welcome" tabindex="-1">Ready for your test?</h1><p class="lead" id="sessionDescription"></p><div class="panel proctor-setup" id="proctorSetup"><span class="tag">Proctored test</span><h2 style="margin-top:14px">Camera and entire-screen sharing are required</h2><p class="small muted">This test is proctored. Your camera checks that your face stays visible, and a screenshot of your entire screen is captured every 20 seconds and saved with your name, ID, the test and the time. Only an administrator can view these. Monitoring stops as soon as you submit. Your browser will ask for permission; nothing is accessed without it.</p><ol class="proctor-steps"><li><div class="ps-text"><strong>1. Camera</strong><br><span id="camState" class="ps-state">Not enabled</span></div><video id="setupCam" autoplay muted playsinline hidden aria-label="Camera preview"></video><button id="camButton" type="button">Enable camera</button></li><li><div class="ps-text"><strong>2. Screen</strong><br><span id="screenState" class="ps-state">Not shared</span></div><button id="screenButton" type="button">Share entire screen</button></li></ol><p class="notice"><strong>When the browser asks what to share, choose &ldquo;Entire Screen&rdquo;</strong> (not &ldquo;Chrome Tab&rdquo; or &ldquo;Window&rdquo;), select your screen, then press Share. Sharing only a tab or window is rejected.</p><p id="faceState" class="ps-state small"></p><label class="check"><input type="checkbox" id="proctorConsent"> I understand and consent to my camera and entire screen being monitored and recorded during this test.</label><p id="proctorError" class="error" role="alert" hidden></p></div>
+<div class="panel"><h2 id="sessionSubject"></h2><div class="facts"><div><strong id="questionCount"></strong><span>Admin-configured questions</span></div><div><strong>Your pace</strong><span>No time limit</span></div><div><strong>Saved report</strong><span>Available to admin</span></div></div><button id="startButton" class="primary" style="margin-top:26px">Start test</button></div><p class="notice">Type or record your answers. Browser voice recognition may require internet access and process audio externally. Scoring uses the administrator’s keywords; it does not verify factual correctness.</p></section>
+<section id="interview" hidden aria-labelledby="question"><div class="session-top"><span id="progressText" class="small muted"></span><span id="candidateLabel" class="small muted"></span></div><div id="progress" class="progress" role="progressbar" aria-label="Questions completed" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0"><span id="progressFill"></span></div><div class="panel"><p id="questionNumber" class="question-number"></p><h1 id="question" class="question" tabindex="-1"></h1><div class="voice"><button id="listenButton" type="button">Record answer</button><button id="stopButton" hidden type="button">Stop recording</button><div id="status" class="status" role="status" aria-live="polite">Type your answer or use the microphone.</div></div><label for="answer">Your answer</label><textarea id="answer" name="answer" autocomplete="off" placeholder="Explain the concept, then add an example…" aria-describedby="answerHelp answerError"></textarea><div class="answer-meta"><span id="answerHelp">You can edit your answer after recording.</span><span id="wordCount">0 words</span></div><p id="answerError" class="error" role="alert" hidden></p><div class="footer-actions"><button id="backButton" class="quiet">Previous question</button><div class="actions"><button id="skipButton" class="quiet">Skip question</button><button id="nextButton" class="primary">Save & next</button></div></div></div><p class="end-note">Answers remain available while this test is open. The completed report is saved when you submit.</p></section>
+<section id="report" hidden><h1 id="reportTitle" tabindex="-1">Your test report.</h1><p id="reportMeta" class="lead"></p><div class="panel"><div class="report-hero"><div><div id="overall" class="big-score"></div><span class="small muted">Keyword coverage score</span></div><div><span class="tag" id="grade"></span><h2 style="margin:12px 0" id="reportMessage"></h2><p class="muted small">Compare your answers with the administrator’s expected answers and concepts below.</p></div></div><div class="result-stats"><div><strong id="answeredCount"></strong><span class="small muted">Questions answered</span></div><div><strong id="conceptCount"></strong><span class="small muted">Keywords matched</span></div></div><div class="actions report-actions"><button id="downloadButton" class="primary">Download scorecard</button><button id="transferButton">Export report for admin</button><button id="reportHtmlButton">Save report in HTML</button><button id="printButton">Print report</button><button id="reportBackButton">Back to portal</button></div><p id="savedMessage" class="help" role="status"></p></div><div class="review"><div class="review-head"><h2>Question by question</h2><button id="expandButton" class="quiet">Expand all</button></div><div id="summary"></div></div><div id="proctoringSection" class="review" hidden></div>
+<p class="notice">Coverage contributes up to 8 points; answer length adds up to 2 points. Expected answers are reference material and are not compared semantically. Keyword matches do not prove correctness.</p></section>
+<section id="admin" hidden><h1 id="adminTitle" tabindex="-1">Admin workspace.</h1><p class="lead">Prepare the test, then review the answers submitted by Scholar.</p><div class="actions admin-nav"><button id="questionsTab" class="primary" aria-pressed="true">Question set</button><button id="reportsTab" aria-pressed="false">Completed reports</button><button id="exportHtmlButton">Export updated HTML</button></div><p id="adminMessage" role="status" class="notice" hidden></p>
+<div id="questionsPanel"><form id="questionForm"><div class="panel"><label for="editSubject">Test subject</label><input id="editSubject" name="editSubject" autocomplete="off" maxlength="200" required><p class="help">Each question needs an expected answer and at least one keyword. Separate keywords with commas; use | for alternatives within one concept, such as CPU | processor.</p></div><div id="questionEditor" style="margin-top:18px"></div><div class="actions"><button id="addQuestionButton" type="button">Add question</button><button class="primary" type="submit">Save question set</button></div><p id="editorError" class="error" role="alert" hidden></p></form></div>
+<div id="reportsPanel" hidden><div class="panel"><h2>Completed submissions</h2><p id="reportCount" class="muted small"></p><label for="importReports">Import a report from another browser or computer</label><input id="importReports" type="file" accept=".json,application/json" name="importReports"><p class="help">Ask the scholar to use “Export report for admin”, then select their JSON file here.</p></div><div id="reportList" style="margin-top:18px"></div></div><p class="notice">Saving updates this browser. “Export updated HTML” downloads a new copy with the saved question set and all reports embedded. Replace your previous copy manually. Embedded reports and expected answers are visible to anyone who can inspect the file; keep the admin archive private.</p></section>
+</main></div>
+
+<div class="pwarns"><div id="faceWarn" class="pwarn" role="alert" hidden>Warning: Please keep your face visible in the camera.</div><div id="screenWarn" class="pwarn" role="alert" hidden><span id="screenWarnText">Screen sharing has stopped. Please share your entire screen again to continue the proctored test.</span><button id="reshareButton" type="button" class="primary">Share entire screen</button></div><div id="camWarn" class="pwarn" role="alert" hidden><span id="camWarnText">The camera has stopped. Please restart it.</span><button id="restartCamButton" type="button" class="primary">Restart camera</button></div></div>
+<div id="proctorDock" class="proctor-dock" hidden><video id="proctorCam" autoplay muted playsinline aria-label="Your camera preview"></video><div class="pd-row"><span id="pdCam" class="pd-chip"></span><span id="pdScreen" class="pd-chip"></span><span id="pdFace" class="pd-chip"></span></div></div>
+<dialog id="shotDialog" aria-labelledby="shotTitle"><div class="review-head"><h3 id="shotTitle"></h3><button type="button" id="shotClose">Close</button></div><img id="shotImg" alt=""><p id="shotMeta" class="small muted"></p><div class="actions"><button type="button" id="shotPrev">Previous</button><button type="button" id="shotNext">Next</button></div></dialog>
+
+<script id="appData" type="application/json">{"appId": "interview-studio-local-20261005", "schema": 1, "configUpdatedAt": 0, "config": {"subject": "Computer Organization", "questions": [{"q": "What is computer organization, and how is it different from computer architecture?", "expected": "Computer architecture describes programmer-visible features such as the instruction set. Computer organization describes the hardware implementation, including datapaths, control signals, and memory interfaces that realize that architecture.", "keys": ["hardware", "implementation", "architecture", "instruction set"]}, {"q": "Explain the main components of a computer system.", "expected": "A computer system has a CPU, memory, input devices, and output devices connected through interconnects. The CPU includes the ALU for arithmetic and logic, registers for working data, and a control unit that coordinates instructions.", "keys": ["cpu", "memory", "input", "output", "alu", "control unit"]}, {"q": "What are CPU registers and why are they fast?", "expected": "A register is a small, fast storage location inside the CPU. Registers hold temporary operands, addresses, and instruction state. Their close integration with the CPU datapath provides much faster access than main memory.", "keys": ["register", "cpu", "fast", "temporary", "instruction"]}, {"q": "Explain the fetch-decode-execute instruction cycle.", "expected": "The program counter identifies the next instruction. The CPU fetches it from memory into the instruction register, decodes its operation and operands, executes it, and updates the program counter and any result state.", "keys": ["fetch", "decode", "execute", "program counter", "instruction register"]}, {"q": "What is cache memory and why is it required?", "expected": "Cache is a small, fast memory near the CPU that keeps copies of frequently or recently used memory data. Temporal and spatial locality allow it to reduce average access latency and CPU waiting time.", "keys": ["cache", "cpu", "memory", "fast", "latency", "locality"]}, {"q": "Explain L1, L2 and L3 cache.", "expected": "L1 is usually the smallest and fastest cache closest to each CPU core. L2 generally provides more capacity with greater latency. L3 is typically larger, slower, and shared across cores. Exact speed, size, and organization depend on the processor.", "keys": ["l1", "l2", "l3", "speed", "size", "cpu"]}, {"q": "What is virtual memory?", "expected": "Virtual memory gives each process a virtual address space. The operating system and memory-management hardware map pages to physical RAM. Some systems use disk-backed paging when pages are not resident in RAM; virtual memory also supports isolation and protection.", "keys": ["virtual memory", "ram", "disk", "page", "address space"]}, {"q": "Explain RISC and CISC.", "expected": "RISC generally emphasizes simpler, regular instruction encodings and load/store operations, while CISC traditionally offers more complex instructions and varied encodings. Modern implementations may share many techniques, so these labels alone do not determine performance.", "keys": ["risc", "cisc", "instruction", "simple", "complex"]}, {"q": "A CPU often waits for main-memory data. How can performance be improved?", "expected": "Improve cache effectiveness through locality-friendly data access, reduce unnecessary memory traffic, use prefetch where useful, and improve available memory bandwidth. The right optimization depends on whether latency, bandwidth, or another bottleneck limits the workload.", "keys": ["cache", "prefetch", "locality", "bandwidth", "memory"]}, {"q": "Two CPUs have the same clock speed but different performance. Why?", "expected": "Performance depends on instructions per cycle (IPC), cache behavior, pipeline design, instruction set and microarchitecture, core count, workload parallelism, and memory access. The same clock speed does not imply the same work completed per second.", "keys": ["ipc", "cache", "pipeline", "cores", "architecture", "instruction"]}]}, "reports": []}</script>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function isAdminPassword(password){return password==='HCLTSS@2026';}
+function safeJson(value){return JSON.stringify(value).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026').replace(/\u2028/g,'\\u2028').replace(/\u2029/g,'\\u2029');}
+function validateConfig(raw){
+ if(!raw||typeof raw.subject!=='string'||!raw.subject.trim()||!Array.isArray(raw.questions)||!raw.questions.length||raw.questions.length>200)throw new Error('Add a subject and between 1 and 200 questions.');
+ return {subject:raw.subject.trim(),questions:raw.questions.map((r,n)=>{if(!r||typeof r.q!=='string'||!r.q.trim()||typeof r.expected!=='string'||!r.expected.trim()||!Array.isArray(r.keys))throw new Error(`Question ${n+1} needs a question, expected answer, and keywords.`);const keys=[...new Set(r.keys.map(k=>String(k).trim().toLowerCase()).filter(Boolean))];if(!keys.length||keys.some(k=>k.split('|').some(a=>!a.trim())))throw new Error(`Question ${n+1} needs valid, non-empty keywords and alternatives.`);return {q:r.q.trim(),expected:r.expected.trim(),keys};})};
+}
+function scoreAnswer(answer,keys){
+ const low=answer.toLowerCase().replace(/[-–—]/g,' ').replace(/\s+/g,' ').trim();
+ const hits=keys.filter(k=>k.split('|').some(term=>{const normalized=term.trim().toLowerCase().replace(/[-–—]/g,' ').replace(/\s+/g,' ');return new RegExp('(?:^|[^a-z0-9])'+normalized.replace(/[.*+?^${}()|[\]\\]/g,'\\$&').replace(/ /g,'\\s+')+'(?:s)?(?=$|[^a-z0-9])','i').test(low);}));
+ const words=answer.trim().split(/\s+/).filter(Boolean).length;
+ return {score:answer.trim()?Math.min(10,Math.round(hits.length/Math.max(1,keys.length)*8+Math.min(2,Math.floor(words/20)))):0,hits,missing:keys.filter(k=>!hits.includes(k)),words};
+}
+function cleanProctoring(p){
+ if(!p||typeof p!=='object'||typeof p.attemptId!=='string'||!p.attemptId)return undefined;
+ const t=(v,n=300)=>String(v??'').slice(0,n),num=v=>Number.isFinite(Number(v))&&Number(v)>=0?Math.floor(Number(v)):0;
+ return {version:1,attemptId:t(p.attemptId,100),studentId:t(p.studentId,120),studentName:t(p.studentName,120),examId:t(p.examId,40),startedAt:t(p.startedAt,40),endedAt:t(p.endedAt,40),status:t(p.status,60),camera:t(p.camera,30),screen:t(p.screen,30),screenSurface:t(p.screenSurface,30),faceDetection:t(p.faceDetection,30),screenshots:num(p.screenshots),faceWarnings:num(p.faceWarnings),screenInterruptions:num(p.screenInterruptions),otherEvents:num(p.otherEvents),events:(Array.isArray(p.events)?p.events:[]).slice(0,5000).filter(e=>e&&typeof e==='object').map(e=>({type:t(e.type,40),at:t(e.at,40),studentId:t(e.studentId,120),examId:t(e.examId,40),attemptId:t(e.attemptId,100),description:t(e.description)}))};
+}
+function mergeReports(a,b){return [...new Map([...a,...b].map(r=>[r.id,r])).values()].sort((a,b)=>String(b.completedAt).localeCompare(String(a.completedAt)));}
+function validateReport(r){if(!r||typeof r.id!=='string'||typeof r.candidate!=='string'||typeof r.subject!=='string'||!Number.isFinite(Date.parse(r.completedAt))||!Array.isArray(r.results)||!r.results.length||r.results.length>200)throw new Error('This file does not contain a valid interview report.');return {id:r.id,candidate:r.candidate,candidateId:String(r.candidateId||''),subject:r.subject,completedAt:r.completedAt,proctoring:(c=>c&&c.attemptId===r.id?c:undefined)(cleanProctoring(r.proctoring)),results:r.results.map(x=>{if(typeof x.q!=='string'||typeof x.expected!=='string'||typeof x.a!=='string'||!Array.isArray(x.keys)||!x.keys.length||x.keys.some(k=>typeof k!=='string'||!k.trim()))throw new Error('A report answer is incomplete.');return {q:x.q,expected:x.expected,a:x.a,keys:x.keys,...scoreAnswer(x.a,x.keys)};})};}
+const SEED=JSON.parse($('appData').textContent);
+const STORAGE_KEY='interview-studio-portal:'+SEED.appId;
+let state={...SEED,config:validateConfig(SEED.config),reports:(SEED.reports||[]).map(validateReport)};
+let role=null,index=0,answers=[],testConfig=null,scholar=null,currentReport=null,active=false,recognition=null,listening=false,voiceEpoch=0,view='login',draftDirty=false,reportSaved=false;
+function persist(next){try{try{const latest=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(latest&&latest.appId===next.appId){next={...next,reports:mergeReports(next.reports,(latest.reports||[]).map(validateReport))};if(Number(latest.configUpdatedAt)>Number(next.configUpdatedAt))next={...next,config:validateConfig(latest.config),configUpdatedAt:latest.configUpdatedAt};}}catch{}localStorage.setItem(STORAGE_KEY,JSON.stringify(next));state=next;return true;}catch{state=next;return false;}}
+function storageNotice(message){$('storageWarning').hidden=false;$('storageWarning').textContent=message;}
+function setView(next){if(next!=='report')proctorReleaseGallery();view=next;['login','setup','interview','report','admin'].forEach(id=>$(id).hidden=id!==next);$('logoutButton').hidden=!role;$('roleLabel').textContent=role==='admin'?'Admin portal':role==='scholar'?'Scholar portal':'Choose your portal';$('portalTag').textContent=role==='admin'?'Administrator':role==='Scholar'?'Scholar':'Interview portal';$('sidebarSubject').textContent=testConfig&&active?testConfig.subject:state.config.subject;$('questionMap').hidden=next!=='interview';}
+function status(message){$('status').textContent=message;}
+function updateWords(){$('wordCount').textContent=`${$('answer').value.trim().split(/\s+/).filter(Boolean).length} words`;}
+function saveAnswer(){answers[index]=$('answer').value;updateMap();}
+function stopVoice(){voiceEpoch++;if(recognition){const old=recognition;recognition=null;old.onend=old.onresult=old.onerror=null;try{old.abort();}catch{}}listening=false;$('answer').readOnly=false;voiceControls();}
+function voiceControls(){$('listenButton').disabled=listening||!(window.SpeechRecognition||window.webkitSpeechRecognition);$('stopButton').hidden=!listening;$('nextButton').disabled=listening;$('skipButton').disabled=listening;$('backButton').disabled=listening||index===0;}
+function updateMap(){if(!testConfig)return;$('questionMap').innerHTML=testConfig.questions.map((_,n)=>`<button type="button" data-index="${n}" class="${n===index?'current ':''}${answers[n].trim()?'answered':''}" aria-label="Question ${n+1}${answers[n].trim()?', answered':''}" ${n===index?'aria-current="step"':''}>${n+1}</button>`).join('');}
+function showSetup(){setView('setup');$('sessionDescription').textContent=`Welcome, ${scholar.name}. The administrator has prepared this question set for you.`;$('sessionSubject').textContent=state.config.subject;$('questionCount').textContent=state.config.questions.length+' questions';proctorResetSetup();$('welcome').focus();}
+function startTest(){if(role!=='scholar'||!proctorReady())return;testConfig=JSON.parse(JSON.stringify(state.config));answers=testConfig.questions.map(()=>'');index=0;active=true;currentReport=null;$('candidateLabel').textContent=scholar.name;proctorBegin();showQuestion();}
+function showQuestion(){stopVoice();setView('interview');const total=testConfig.questions.length,done=answers.filter(a=>a.trim()).length;$('question').textContent=testConfig.questions[index].q;$('questionNumber').textContent=`Question ${index+1} of ${total}`;$('progressText').textContent=`${done} of ${total} answered`;$('progress').setAttribute('aria-valuemax',total);$('progress').setAttribute('aria-valuenow',done);$('progressFill').style.width=done/total*100+'%';$('answer').value=answers[index];$('answerError').hidden=true;$('nextButton').textContent=index===total-1?'Submit test':'Save & next';status(window.SpeechRecognition||window.webkitSpeechRecognition?'Type your answer or use the microphone.':'Voice input is unavailable in this browser. Please type your answer.');updateWords();updateMap();$('question').focus();}
+function listen(){if(listening)return;stopVoice();const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){status('Voice input is unavailable. Please type your answer.');return;}const epoch=voiceEpoch,r=new SR();recognition=r;let base=$('answer').value.trim(),finals={};r.lang='en-IN';r.continuous=true;r.interimResults=true;listening=true;voiceControls();
+ r.onstart=()=>{if(epoch!==voiceEpoch)return;$('answer').readOnly=true;status('Recording. Speak clearly, then select Stop recording.');};
+ r.onresult=e=>{if(epoch!==voiceEpoch)return;let interim='';for(let n=0;n<e.results.length;n++){const t=e.results[n][0].transcript;if(e.results[n].isFinal)finals[n]=t;else interim+=t+' ';}$('answer').value=[base,...Object.values(finals),interim.trim()].filter(Boolean).join(' ');saveAnswer();updateWords();};
+ r.onerror=e=>{if(epoch!==voiceEpoch)return;status(e.error==='not-allowed'?'Microphone access denied. Allow it in browser settings, or type your answer.':'Voice input stopped ('+e.error+'). You can type your answer.');};
+ r.onend=()=>{if(epoch!==voiceEpoch)return;listening=false;recognition=null;$('answer').readOnly=false;voiceControls();if($('status').textContent.startsWith('Recording')||$('status').textContent.startsWith('Finishing'))status('Recording stopped. Review your answer before continuing.');};
+ try{r.start();}catch{stopVoice();status('Voice input could not start. Please type your answer.');}
+}
+function advance(skip=false){if(listening||!active)return;const answer=$('answer').value.trim();if(!skip&&!answer){$('answerError').textContent='Add an answer, or select Skip question to continue without one.';$('answerError').hidden=false;$('answer').focus();return;}saveAnswer();if(index<testConfig.questions.length-1){index++;showQuestion();}else{const unanswered=answers.filter(a=>!a.trim()).length;if(unanswered&&!window.confirm(`Submit this test with ${unanswered} unanswered question${unanswered===1?'':'s'}?`))return;finish();}}
+function finish(){if(!active)return;stopVoice();const proctoring=proctorStop();currentReport={id:proctoring?proctoring.attemptId:crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2),candidate:scholar.name,candidateId:scholar.id,subject:testConfig.subject,completedAt:new Date().toISOString(),results:testConfig.questions.map((q,n)=>({...q,a:answers[n],...scoreAnswer(answers[n],q.keys)})),proctoring};reportSaved=persist({...state,reports:mergeReports(state.reports,[currentReport])});active=false;renderReport(currentReport);}
+function renderReport(r){currentReport=r;setView('report');const avg=r.results.reduce((s,x)=>s+x.score,0)/r.results.length,hits=r.results.reduce((s,x)=>s+x.hits.length,0),keys=r.results.reduce((s,x)=>s+x.keys.length,0);$('reportTitle').textContent=role==='admin'?'Scholar test report.':'Your test report.';$('reportMeta').textContent=[r.candidate,r.candidateId,r.subject,new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'}).format(new Date(r.completedAt))].filter(Boolean).join(' · ');$('overall').innerHTML=avg.toFixed(1)+'<small> / 10</small>';$('grade').textContent=avg>=8?'Broad coverage':avg>=5?'Developing coverage':'Room to grow';$('reportMessage').textContent=avg>=8?'Build on this foundation.':'Revisit the concepts below.';$('answeredCount').textContent=r.results.filter(x=>x.a.trim()).length+' / '+r.results.length;$('conceptCount').textContent=hits+' / '+keys;$('savedMessage').textContent=role==='admin'?'Viewing the saved question set used for this submission.':reportSaved?'Report saved in this browser for admin review. Export a copy to transfer or archive it.':'Browser storage is unavailable. Download your report or save it in HTML before leaving.';$('summary').innerHTML=r.results.map((x,n)=>`<details><summary><span class="qtext">${n+1}. ${escapeHtml(x.q)}</span><span class="qscore">${x.score} / 10</span></summary><div class="detail-content"><h3>Scholar answer</h3><p class="answer-copy">${escapeHtml(x.a)||'No answer recorded.'}</p><h3>Expected answer</h3><p class="answer-copy">${escapeHtml(x.expected)}</p><p class="small"><strong>Keywords matched</strong></p><div class="concepts">${x.hits.length?x.hits.map(k=>`<span class="concept match">${escapeHtml(k)}</span>`).join(''):'None matched'}</div><p class="small"><strong>Keywords to revisit</strong></p><div class="concepts">${x.missing.length?x.missing.map(k=>`<span class="concept missing">${escapeHtml(k)}</span>`).join(''):'All expected keywords mentioned'}</div></div></details>`).join('');$('expandButton').textContent='Expand all';renderProctoring(r);$('reportTitle').focus();}
+function saveFile(contents,filename,type){const url=URL.createObjectURL(new Blob([contents],{type})),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);}
+function downloadReport(){if(!currentReport)return;const r=currentReport,avg=r.results.reduce((s,x)=>s+x.score,0)/r.results.length;saveFile(['INTERVIEW STUDIO — SCORECARD','Candidate: '+r.candidate,'Scholar ID: '+r.candidateId,'Subject: '+r.subject,'Completed: '+r.completedAt,'Overall: '+avg.toFixed(1)+'/10','Keyword estimate; factual correctness is not evaluated.','',...r.results.flatMap((x,n)=>[`${n+1}. ${x.q}`,'Answer: '+(x.a||'No answer'),'Expected answer: '+x.expected,'Score: '+x.score+'/10','Matched: '+x.hits.join(', '),'Missing: '+x.missing.join(', '),''])].join('\n'),'interview-scorecard.txt','text/plain;charset=utf-8');}
+let TEMPLATE='';
+function exportHtml(ownReport=false){if(!ownReport&&role!=='admin')return;const snapshot={...state,reports:ownReport?[currentReport]:state.reports};const html='<!doctype html>\n'+TEMPLATE.replace(/(<script id="appData" type="application\/json">)[\s\S]*?(<\/script>)/,(_,open,close)=>open+safeJson(snapshot)+close);saveFile(html,ownReport?'Interview-Studio-report.html':'Interview-Studio-archive.html','text/html;charset=utf-8');}
+function message(text){$('adminMessage').hidden=false;$('adminMessage').textContent=text;}
+function collectDraft(){return {subject:$('editSubject').value,questions:[...$('questionEditor').querySelectorAll('.question-edit')].map(el=>({q:el.querySelector('[data-field="q"]').value,expected:el.querySelector('[data-field="expected"]').value,keys:el.querySelector('[data-field="keys"]').value.split(',').map(k=>k.trim()).filter(Boolean)}))};}
+function renderEditor(config){$('editSubject').value=config.subject;$('questionEditor').innerHTML=config.questions.map((q,n)=>`<div class="panel question-edit" style="margin-bottom:16px"><div class="review-head"><h3>Question ${n+1}</h3><button type="button" data-remove="${n}" aria-label="Remove question ${n+1}">Remove</button></div><label for="q${n}">Question</label><textarea id="q${n}" data-field="q" name="q${n}" required>${escapeHtml(q.q)}</textarea><label for="expected${n}" style="margin-top:16px">Expected answer</label><textarea id="expected${n}" data-field="expected" name="expected${n}" required>${escapeHtml(q.expected)}</textarea><label for="keys${n}" style="margin-top:16px">Keywords (comma-separated)</label><input id="keys${n}" data-field="keys" name="keys${n}" autocomplete="off" value="${escapeHtml(q.keys.join(', '))}" required></div>`).join('');}
+function adminTab(which){if(role!=='admin')return;$('questionsPanel').hidden=which!=='questions';$('reportsPanel').hidden=which!=='reports';for(const [id,key] of [['questionsTab','questions'],['reportsTab','reports']]){$(id).classList.toggle('primary',key===which);$(id).setAttribute('aria-pressed',String(key===which));}if(which==='reports')renderReportList();}
+function renderAdmin(){if(role!=='admin')return;setView('admin');renderEditor(state.config);draftDirty=false;adminTab('questions');$('adminTitle').focus();}
+function renderReportList(){$('reportCount').textContent=state.reports.length+' saved submission'+(state.reports.length===1?'':'s');$('reportList').innerHTML=state.reports.length?state.reports.map(r=>{const avg=r.results.reduce((s,x)=>s+x.score,0)/r.results.length;return `<div class="panel report-row"><div><h3>${escapeHtml(r.candidate)}</h3><p class="small muted">${escapeHtml(r.subject)}${r.candidateId?' · '+escapeHtml(r.candidateId):''}<br>${escapeHtml(new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'short'}).format(new Date(r.completedAt)))}${proctorBadge(r)}</p></div><strong>${avg.toFixed(1)} / 10</strong><button data-report="${escapeHtml(r.id)}">View report</button></div>`;}).join(''):'<div class="panel"><h3>No completed tests yet</h3><p class="muted">Completed tests from this browser appear here. Import exported reports from other devices.</p></div>';}
+function logout(){if((active||draftDirty)&&!window.confirm('Log out and discard your unfinished test or unsaved question edits?'))return;stopVoice();proctorAbort();active=false;draftDirty=false;role=null;currentReport=null;scholar=null;answers=[];testConfig=null;$('candidate').value='';$('candidateId').value='';$('adminPassword').value='';$('loginError').hidden=true;setView('login');$('main').focus();}
+/* ===================== Online proctoring (added) =====================
+ Student side : camera + ENTIRE-screen sharing (browser permission prompts), face monitoring,
+                a screenshot every 20 s, and an event log for the attempt.
+ Storage      : screenshots -> IndexedDB (key = attemptId:seq, never mixed between attempts).
+                summary + event log -> inside the report object (same store as the scores).
+ Admin side   : the "Proctoring report" block is rendered only when role === 'admin'.        */
+const PROCTOR={SHOT_MS:20000,MAX_W:1280,QUALITY:.6,FACE_GRACE_MS:3000,FACE_RETURN_MS:1000,BEEP_COOLDOWN_MS:20000,DETECT_MS:500,
+ MP:'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14',
+ MODEL:'https://storage.googleapis.com/mediapipe-models/face_detector/blaze_face_short_range/float16/1/blaze_face_short_range.tflite'};
+let proc=null,gallery=null,galleryToken=0;
+const newId=()=>crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2);
+const fmtClock=v=>{v=Math.max(0,Math.round(v));return String(Math.floor(v/60)).padStart(2,'0')+':'+String(v%60).padStart(2,'0');};
+const live=st=>!!st&&st.getVideoTracks().some(t=>t.readyState==='live');
+function examIdFor(subject){let h=2166136261;for(const c of String(subject)){h^=c.codePointAt(0);h=Math.imul(h,16777619)>>>0;}return 'EX-'+h.toString(16).padStart(8,'0').toUpperCase();}
+
+/* ---- screenshot storage (IndexedDB) ---- */
+let dbPromise=null;
+function openDb(){return dbPromise||(dbPromise=new Promise((res,rej)=>{if(!window.indexedDB){rej(new Error('IndexedDB unavailable'));return;}const q=indexedDB.open('interview-studio-proctoring:'+SEED.appId,1);q.onupgradeneeded=()=>{q.result.createObjectStore('shots',{keyPath:'key'}).createIndex('attemptId','attemptId',{unique:false});};q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error||new Error('Storage error'));q.onblocked=()=>rej(new Error('Storage blocked'));}).catch(e=>{dbPromise=null;throw e;}));}
+function dbTx(mode,fn){return openDb().then(db=>new Promise((res,rej)=>{const t=db.transaction('shots',mode);let out;try{out=fn(t.objectStore('shots'));}catch(e){rej(e);return;}t.oncomplete=()=>res(out&&'result' in out?out.result:out);t.onerror=()=>rej(t.error);t.onabort=()=>rej(t.error||new Error('Storage aborted'));}));}
+const putShot=rec=>dbTx('readwrite',st=>st.put(rec));
+const getShots=id=>dbTx('readonly',st=>st.index('attemptId').getAll(IDBKeyRange.only(id)));
+const deleteShots=id=>dbTx('readwrite',st=>{const q=st.index('attemptId').openCursor(IDBKeyRange.only(id));q.onsuccess=()=>{const c=q.result;if(c){c.delete();c.continue();}};return q;});
+const shotKey=(id,seq)=>id+':'+String(seq).padStart(5,'0');
+const blobToDataUrl=b=>new Promise((res,rej)=>{const f=new FileReader();f.onload=()=>res(f.result);f.onerror=()=>rej(f.error);f.readAsDataURL(b);});
+async function exportShots(id){const out=[];for(const x of (await getShots(id)).sort((a,b)=>a.seq-b.seq))out.push({attemptId:x.attemptId,seq:x.seq,takenAt:x.takenAt,elapsedSec:x.elapsedSec,width:x.width,height:x.height,image:await blobToDataUrl(x.blob)});return out;}
+async function importShots(list,reports){
+ if(!Array.isArray(list))return 0;
+ const owners=new Map(reports.filter(r=>r.proctoring).map(r=>[r.proctoring.attemptId,r])); // only attempts present in the same file
+ let n=0;
+ for(const x of list){
+  const r=x&&owners.get(x.attemptId),seq=Math.floor(Number(x&&x.seq));
+  if(!r||!(seq>0&&seq<100000)||typeof x.image!=='string'||!/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(x.image))continue;
+  const bin=atob(x.image.slice(23)),u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+  if(u8.length>8e6)continue;
+  await putShot({key:shotKey(x.attemptId,seq),attemptId:x.attemptId,studentId:r.proctoring.studentId,studentName:r.proctoring.studentName,examId:r.proctoring.examId,seq,takenAt:String(x.takenAt||'').slice(0,40),elapsedSec:Math.max(0,Math.floor(Number(x.elapsedSec)||0)),width:Math.floor(Number(x.width)||0),height:Math.floor(Number(x.height)||0),blob:new Blob([u8],{type:'image/jpeg'})});
+  n++;
+ }
+ return n;
+}
+
+/* ---- attempt session + event log ---- */
+function ensureProc(){
+ if(!proc){proc={attemptId:newId(),examId:examIdFor(state.config.subject),studentId:scholar?scholar.id:'',studentName:scholar?scholar.name:'',events:[],cam:null,screen:null,screenVideo:null,screenSurface:'',detector:null,faceMode:'idle',audio:null,worker:null,workerUrl:'',timer:0,
+  running:false,stopping:false,startedAt:0,camActive:false,screenActive:false,capturing:false,shotCount:0,shotFailures:0,nextShotAt:0,detecting:false,lastDetect:0,
+  faceVisible:true,hasSeenFace:false,missingSince:0,seenSince:0,lostAt:0,lastBeep:0};}
+ try{if(!proc.audio){const AC=window.AudioContext||window.webkitAudioContext;if(AC)proc.audio=new AC();}if(proc.audio&&proc.audio.state==='suspended')proc.audio.resume();}catch{}
+ return proc;
+}
+function logEvent(type,description,p=proc){if(!p||p.events.length>=5000)return;p.events.push({type,at:new Date().toISOString(),studentId:p.studentId,examId:p.examId,attemptId:p.attemptId,description});}
+function beep(p){try{const c=p.audio;if(!c)return;if(c.state==='suspended')c.resume();const t=c.currentTime;[[880,0],[660,.28]].forEach(([f,d])=>{const o=c.createOscillator(),g=c.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,t+d);g.gain.exponentialRampToValueAtTime(.35,t+d+.03);g.gain.exponentialRampToValueAtTime(.0001,t+d+.25);o.connect(g);g.connect(c.destination);o.start(t+d);o.stop(t+d+.27);});}catch{}}
+
+/* ---- setup screen (permissions) ---- */
+function setupError(msg){$('proctorError').textContent=msg||'';$('proctorError').hidden=!msg;}
+function proctorSyncSetup(){
+ const p=proc,cam=!!p&&live(p.cam),scr=!!p&&live(p.screen),fm=p?p.faceMode:'idle',set=(id,text,cls)=>{const e=$(id);e.textContent=text;e.className='ps-state'+(id==='faceState'?' small':'')+(cls?' '+cls:'');};
+ set('camState',cam?'Camera ready':'Not enabled',cam?'ok':'');
+ set('screenState',scr?'Screen shared'+(p.screenSurface==='monitor'?' (entire screen)':' (could not be verified in this browser)'):'Not shared',scr?'ok':'');
+ set('faceState',!cam?'':fm==='loading'?'Loading face detection…':fm==='ready'?'Face detection ready.':'Face detection could not be loaded (it needs an internet connection). You can continue; this will be noted in your report.',fm==='ready'?'ok':fm==='unavailable'?'bad':'');
+ $('camButton').disabled=cam;$('screenButton').disabled=scr;
+ const v=$('setupCam');if(cam){if(v.srcObject!==p.cam){v.srcObject=p.cam;v.play().catch(()=>{});}v.hidden=false;}else{v.srcObject=null;v.hidden=true;}
+ $('startButton').disabled=!(cam&&scr&&fm!=='loading'&&$('proctorConsent').checked);
+}
+function proctorResetSetup(){$('proctorConsent').checked=false;setupError('');proctorSyncSetup();}
+function proctorReady(){
+ const p=proc;
+ if(!p||!live(p.cam)||!live(p.screen)){setupError('Enable the camera and share your entire screen before starting.');return false;}
+ if(!$('proctorConsent').checked){setupError('Please confirm that you consent to camera and screen monitoring.');return false;}
+ return true;
+}
+async function enableCamera(){
+ if(role!=='scholar')return;
+ const p=ensureProc();setupError('');
+ try{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error('This browser or page cannot access the camera. Use a current browser and open this file over HTTPS or as a local file.');
+  await openDb();try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();}catch{}
+ }catch(e){setupError(e.message==='IndexedDB unavailable'||/Storage/.test(e.message)?'Browser storage for proctoring screenshots is unavailable (private or incognito mode can block it). A proctored test cannot start without it.':e.message);return;}
+ try{
+  const stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:640},height:{ideal:480},facingMode:'user'},audio:false});
+  p.cam=stream;p.camActive=true;logEvent('camera_granted','Camera permission granted',p);
+  stream.getVideoTracks()[0].addEventListener('ended',()=>onCamEnded(p,stream));
+  proctorSyncSetup();loadFaceDetector(p);
+ }catch(e){logEvent('camera_denied','Camera could not be started: '+(e.name||'error'),p);setupError(e.name==='NotAllowedError'?'Camera permission was denied. Allow camera access in your browser, then try again.':e.name==='NotFoundError'?'No camera was found on this device.':'The camera could not be started: '+(e.message||e.name));}
+}
+async function restartCamera(){
+ const p=proc;if(!p||!p.running)return;
+ try{const stream=await navigator.mediaDevices.getUserMedia({video:{width:{ideal:640},height:{ideal:480},facingMode:'user'},audio:false});
+  if(p.cam)p.cam.getTracks().forEach(t=>t.stop());p.cam=stream;p.camActive=true;stream.getVideoTracks()[0].addEventListener('ended',()=>onCamEnded(p,stream));
+  const v=$('proctorCam');v.srcObject=stream;v.play().catch(()=>{});logEvent('camera_granted','Camera restored',p);$('camWarn').hidden=true;updateDock(p);
+ }catch(e){$('camWarnText').textContent='The camera could not be restarted ('+(e.name||'error')+'). Check that it is connected and allowed, then try again.';}
+}
+function onCamEnded(p,stream){
+ if(p!==proc||p.cam!==stream||p.stopping)return;
+ p.camActive=false;
+ if(!p.running){p.cam=null;proctorSyncSetup();setupError('The camera was disconnected. Enable it again.');return;}
+ logEvent('camera_stopped','Camera stream ended during the exam',p);beep(p);$('camWarnText').textContent='The camera has stopped. Please restart it.';$('camWarn').hidden=false;updateDock(p);
+}
+async function shareScreen(){
+ if(role!=='scholar')return;
+ const p=ensureProc();   // NOTE: nothing may be awaited before getDisplayMedia (it needs the click's user activation)
+ const fail=msg=>{if(p.running)$('screenWarnText').textContent=msg;else setupError(msg);};
+ if(!p.running)setupError('');
+ let stream;
+ try{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getDisplayMedia)throw new Error('This browser does not support screen sharing. Use a current desktop version of Chrome, Edge or Firefox.');
+  stream=await navigator.mediaDevices.getDisplayMedia({video:{displaySurface:'monitor',frameRate:{ideal:5,max:10}},audio:false,selfBrowserSurface:'exclude',surfaceSwitching:'exclude',monitorTypeSurfaces:'include'});
+ }catch(e){fail(e.name==='NotAllowedError'?'Screen sharing was cancelled or denied. Select “Entire Screen”, then press Share.':e.message||'Screen sharing could not be started.');return;}
+ const track=stream.getVideoTracks()[0],surface=(track.getSettings&&track.getSettings().displaySurface)||'';
+ if(surface&&surface!=='monitor'){stream.getTracks().forEach(t=>t.stop());const what=surface==='browser'?'a browser tab':'an application window';logEvent('screen_rejected','Student shared '+what+' instead of the entire screen',p);fail('You shared '+what+'. Please choose “Entire Screen”, select your screen, then share again.');return;}
+ if(p.screen)p.screen.getTracks().forEach(t=>t.stop());
+ p.screen=stream;p.screenSurface=surface;
+ let v=p.screenVideo;if(!v){v=p.screenVideo=document.createElement('video');v.muted=true;v.playsInline=true;v.className='proctor-hidden';document.body.append(v);}
+ v.srcObject=stream;v.play().catch(()=>{});
+ track.addEventListener('ended',()=>onScreenEnded(p,stream));
+ logEvent('screen_started',(p.running?'Screen sharing resumed':'Screen sharing started')+(surface==='monitor'?' (entire screen)':' (screen type could not be verified in this browser)'),p);
+ if(p.running){p.screenActive=true;p.nextShotAt=Date.now();$('screenWarn').hidden=true;updateDock(p);}
+ proctorSyncSetup();
+}
+function onScreenEnded(p,stream){
+ if(p!==proc||p.screen!==stream||p.stopping)return;
+ if(!p.running){p.screen=null;proctorSyncSetup();setupError('Screen sharing was stopped. Share your entire screen again.');return;}
+ p.screenActive=false;logEvent('screen_stopped','Screen sharing stopped before the exam was submitted',p);beep(p);
+ $('screenWarnText').textContent='Screen sharing has stopped. Please share your entire screen again to continue the proctored test.';$('screenWarn').hidden=false;updateDock(p);
+}
+async function loadFaceDetector(p){
+ if(p.faceMode!=='idle')return;p.faceMode='loading';proctorSyncSetup();
+ const load=async()=>{
+  const mp=await import(PROCTOR.MP+'/vision_bundle.mjs'),files=await mp.FilesetResolver.forVisionTasks(PROCTOR.MP+'/wasm');
+  const make=delegate=>mp.FaceDetector.createFromOptions(files,{baseOptions:{modelAssetPath:PROCTOR.MODEL,delegate},runningMode:'VIDEO',minDetectionConfidence:.5});
+  let d;try{d=await make('GPU');}catch{d=await make('CPU');}
+  return {kind:'mediapipe',detect:v=>d.detectForVideo(v,performance.now()).detections.length>0,close:()=>d.close()};
+ };
+ let det=null;
+ try{det=await Promise.race([load(),new Promise((_,j)=>setTimeout(()=>j(new Error('timeout')),30000))]);}catch{}
+ if(!det&&'FaceDetector' in window){try{const fd=new window.FaceDetector({fastMode:true,maxDetectedFaces:3});det={kind:'native',detect:async v=>(await fd.detect(v)).length>0,close(){}};}catch{}}
+ if(p!==proc){try{det&&det.close();}catch{}return;}
+ p.detector=det;p.faceMode=det?'ready':'unavailable';proctorSyncSetup();
+}
+
+/* ---- exam running ---- */
+function updateDock(p){
+ const chip=(id,text,cls)=>{const e=$(id);e.textContent=text;e.className='pd-chip'+(cls?' '+cls:'');};
+ chip('pdCam',p.camActive?'Camera on':'Camera off',p.camActive?'':'bad');
+ chip('pdScreen',p.screenActive?'Screen shared':'Screen not shared',p.screenActive?'':'bad');
+ chip('pdFace',p.detector?(p.faceVisible?'Face visible':'Face not visible'):'Face check off',p.detector?(p.faceVisible?'':'bad'):'idle');
+}
+function proctorBegin(){
+ const p=proc;if(!p)return;
+ p.running=true;p.startedAt=Date.now();p.nextShotAt=p.startedAt;p.camActive=live(p.cam);p.screenActive=live(p.screen);
+ logEvent('exam_started','Exam "'+testConfig.subject+'" started',p);
+ if(!p.detector)logEvent('face_detection_unavailable','Face detection could not be loaded; face visibility was not monitored',p);
+ const v=$('proctorCam');v.srcObject=p.cam;v.play().catch(()=>{});
+ ['faceWarn','screenWarn','camWarn'].forEach(id=>$(id).hidden=true);
+ $('proctorDock').hidden=false;document.body.classList.add('proctoring');updateDock(p);
+ try{ // a Worker timer keeps ticking at full speed even if the exam tab is in the background
+  p.workerUrl=URL.createObjectURL(new Blob(['setInterval(function(){postMessage(1)},250)'],{type:'text/javascript'}));p.worker=new Worker(p.workerUrl);
+  p.worker.onmessage=()=>proctorTick(p);p.worker.onerror=()=>{if(p.worker){p.worker.terminate();p.worker=null;}if(!p.timer)p.timer=setInterval(()=>proctorTick(p),250);};
+ }catch{p.timer=setInterval(()=>proctorTick(p),250);}
+}
+function proctorTick(p){
+ if(p!==proc||!p.running)return;
+ const now=Date.now();
+ if(p.screenActive&&!p.capturing&&now>=p.nextShotAt){p.nextShotAt+=PROCTOR.SHOT_MS;if(p.nextShotAt<=now)p.nextShotAt=now+PROCTOR.SHOT_MS;captureShot(p);}
+ if(p.camActive&&p.detector&&!p.detecting&&now-p.lastDetect>=PROCTOR.DETECT_MS){p.lastDetect=now;detectFace(p);}
+}
+async function detectFace(p){
+ const v=$('proctorCam');if(v.readyState<2)return;
+ p.detecting=true;
+ try{const seen=await p.detector.detect(v);if(p===proc&&p.running)onFace(p,!!seen);}catch{}finally{p.detecting=false;}
+}
+function onFace(p,seen){
+ const now=Date.now();
+ if(seen){
+  p.missingSince=0;if(!p.seenSince)p.seenSince=now;
+  if(!p.hasSeenFace){p.hasSeenFace=true;if(p.faceVisible)logEvent('face_detected','Face detected; face monitoring is active',p);}
+  if(!p.faceVisible&&now-p.seenSince>=PROCTOR.FACE_RETURN_MS){p.faceVisible=true;logEvent('face_detected','Face visible again after '+Math.round((now-p.lostAt)/1000)+' s',p);$('faceWarn').hidden=true;updateDock(p);}
+ }else{
+  p.seenSince=0;if(!p.missingSince)p.missingSince=now;
+  if(p.faceVisible&&now-p.missingSince>=PROCTOR.FACE_GRACE_MS){ // short movements (< grace period) are ignored
+   p.faceVisible=false;p.lostAt=p.missingSince;p.lastBeep=now;
+   logEvent('face_not_detected','Face not visible in the camera for more than '+PROCTOR.FACE_GRACE_MS/1000+' seconds',p);logEvent('warning_triggered','Warning shown and beep played',p);
+   $('faceWarn').hidden=false;beep(p);updateDock(p);
+  }else if(!p.faceVisible&&now-p.lastBeep>=PROCTOR.BEEP_COOLDOWN_MS){ // cooldown: repeat at most every 20 s
+   p.lastBeep=now;logEvent('warning_triggered','Face still not visible; warning repeated',p);beep(p);
+  }
+ }
+}
+async function grabScreen(p){
+ const track=p.screen.getVideoTracks()[0],v=p.screenVideo;let src=null,w=0,h=0;
+ const fromVideo=()=>{if(v&&v.readyState>=2&&v.videoWidth){src=v;w=v.videoWidth;h=v.videoHeight;}};
+ const fromTrack=async()=>{if(!window.ImageCapture)return;try{const bmp=await Promise.race([new ImageCapture(track).grabFrame(),new Promise((_,j)=>setTimeout(()=>j(0),2000))]);src=bmp;w=bmp.width;h=bmp.height;}catch{}};
+ if(document.hidden){await fromTrack();if(!src)fromVideo();}else{fromVideo();if(!src)await fromTrack();}
+ if(!src)throw new Error('No screen frame available');
+ const scale=Math.min(1,PROCTOR.MAX_W/w),cw=Math.max(1,Math.round(w*scale)),ch=Math.max(1,Math.round(h*scale)),c=document.createElement('canvas');
+ c.width=cw;c.height=ch;c.getContext('2d').drawImage(src,0,0,cw,ch);if(src.close)src.close();
+ const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',PROCTOR.QUALITY));
+ if(!blob)throw new Error('Could not encode screenshot');
+ return {blob,width:cw,height:ch};
+}
+async function captureShot(p){
+ p.capturing=true;const taken=Date.now();
+ try{
+  const img=await grabScreen(p);
+  if(p!==proc||!p.running||!p.screenActive)return;   // never store a screenshot after submission or after sharing stopped
+  const seq=++p.shotCount;
+  try{await putShot({key:shotKey(p.attemptId,seq),attemptId:p.attemptId,studentId:p.studentId,studentName:p.studentName,examId:p.examId,seq,takenAt:new Date(taken).toISOString(),elapsedSec:Math.max(0,Math.round((taken-p.startedAt)/1000)),width:img.width,height:img.height,blob:img.blob});}
+  catch(e){p.shotFailures++;logEvent('screenshot_failed','Screenshot #'+seq+' could not be saved: '+(e&&e.name||'storage error'),p);}
+ }catch(e){p.shotFailures++;if(p.shotFailures<=3)logEvent('screenshot_failed','Screenshot could not be captured: '+(e&&e.message||'error'),p);}
+ finally{p.capturing=false;}
+}
+function releaseMedia(p){
+ p.stopping=true;
+ if(p.worker){p.worker.terminate();p.worker=null;}if(p.workerUrl){URL.revokeObjectURL(p.workerUrl);p.workerUrl='';}if(p.timer){clearInterval(p.timer);p.timer=0;}
+ [p.cam,p.screen].forEach(st=>st&&st.getTracks().forEach(t=>t.stop()));p.cam=p.screen=null;
+ if(p.screenVideo){p.screenVideo.srcObject=null;p.screenVideo.remove();p.screenVideo=null;}
+ try{p.detector&&p.detector.close();}catch{}try{p.audio&&p.audio.close();}catch{}
+ $('proctorCam').srcObject=null;$('setupCam').srcObject=null;$('proctorDock').hidden=true;['faceWarn','screenWarn','camWarn'].forEach(id=>$(id).hidden=true);document.body.classList.remove('proctoring');
+}
+function proctorStop(){   // called by finish(): stops camera, screen share, timers and face detection, returns the summary
+ const p=proc;if(!p||!p.running)return null;
+ p.running=false;logEvent('exam_submitted','Student submitted the exam',p);
+ const n=t=>p.events.filter(e=>e.type===t).length,screenDone=p.screenActive&&live(p.screen),interruptions=n('screen_stopped');
+ const routine=['camera_granted','screen_started','face_detected','face_not_detected','warning_triggered','screen_stopped','exam_started','exam_submitted'];
+ const summary={version:1,attemptId:p.attemptId,studentId:p.studentId,studentName:p.studentName,examId:p.examId,startedAt:new Date(p.startedAt).toISOString(),endedAt:new Date().toISOString(),
+  status:interruptions||!screenDone?'Completed with interruptions':'Completed',camera:'granted',screen:screenDone?'completed':'stopped',screenSurface:p.screenSurface,faceDetection:p.detector?p.detector.kind:'unavailable',
+  screenshots:Math.max(0,p.shotCount-p.shotFailures),faceWarnings:n('face_not_detected'),screenInterruptions:interruptions,otherEvents:p.events.filter(e=>!routine.includes(e.type)).length,events:p.events};
+ releaseMedia(p);proc=null;return summary;
+}
+function proctorAbort(){   // logout / abandoned attempt: release everything and drop partial screenshots
+ const p=proc;if(!p)return;
+ p.running=false;releaseMedia(p);proc=null;
+ if(p.shotCount||p.capturing)deleteShots(p.attemptId).catch(()=>{});
+ proctorSyncSetup();
+}
+
+/* ---- admin: proctoring report ---- */
+const EV_LABEL={exam_started:'Exam started',exam_submitted:'Exam submitted',camera_granted:'Camera permission granted',camera_denied:'Camera permission denied',camera_stopped:'Camera stopped',screen_started:'Screen sharing started',screen_stopped:'Screen sharing stopped',screen_rejected:'Screen share rejected',face_detected:'Face detected',face_not_detected:'Face not detected',warning_triggered:'Warning / beep triggered',fullscreen_exit:'Full-screen exit',tab_hidden:'Exam tab hidden',tab_visible:'Exam tab visible',face_detection_unavailable:'Face detection unavailable',screenshot_failed:'Screenshot failed'};
+const EV_WARN=new Set(['camera_denied','camera_stopped','screen_stopped','screen_rejected','face_not_detected','warning_triggered','tab_hidden','fullscreen_exit','face_detection_unavailable','screenshot_failed']);
+function proctorBadge(r){const p=r.proctoring;return p?`<br><span class="small">Proctored · ${p.screenshots} screenshot${p.screenshots===1?'':'s'} · ${p.faceWarnings} face warning${p.faceWarnings===1?'':'s'} · ${p.screenInterruptions} screen interruption${p.screenInterruptions===1?'':'s'}</span>`:'<br><span class="small muted">Not proctored</span>';}
+function proctorReleaseGallery(){galleryToken++;if(gallery){gallery.urls.forEach(u=>URL.revokeObjectURL(u));gallery=null;}const d=$('shotDialog');if(d&&d.open)d.close();}
+function renderProctoring(r){
+ proctorReleaseGallery();
+ const box=$('proctoringSection'),p=r.proctoring;
+ if(role!=='admin'||!p){box.hidden=true;box.innerHTML='';return;}   // scholars never see this block
+ const t0=Date.parse(p.startedAt),rel=e=>{const d=(Date.parse(e.at)-t0)/1000;return Number.isFinite(d)&&d>=0?fmtClock(d):'Before start';},stat=(v,l)=>`<div><strong>${escapeHtml(v)}</strong><span>${escapeHtml(l)}</span></div>`;
+ const screenLabel=p.screen==='completed'?'Completed':p.screen==='stopped'?'Stopped before submission':p.screen||'—',engine=p.faceDetection==='mediapipe'?'MediaPipe':p.faceDetection==='native'?'Browser':'Unavailable';
+ box.hidden=false;
+ box.innerHTML=`<div class="panel"><div class="review-head"><h2>Proctoring report</h2><span class="tag">${escapeHtml(p.status||'Completed')}</span></div><p class="muted small">Student: <strong>${escapeHtml(p.studentName||r.candidate)}</strong>${p.studentId?' ('+escapeHtml(p.studentId)+')':''} · Exam: ${escapeHtml(r.subject)} (${escapeHtml(p.examId)}) · Attempt ID: ${escapeHtml(p.attemptId)}</p>
+<div class="psum">${stat(p.status||'Completed','Proctoring status')}${stat(p.camera==='granted'?'Granted':p.camera||'—','Camera')}${stat(screenLabel,'Screen sharing')}${stat(p.screenshots,'Screenshots captured')}${stat(p.faceWarnings,'Face warnings')}${stat(p.screenInterruptions,'Screen sharing interruptions')}${stat(p.otherEvents,'Other proctoring events')}${stat(engine,'Face detection')}</div>
+<details open><summary><span class="qtext">Event timeline</span><span class="qscore">${p.events.length} events</span></summary><div class="detail-content">${p.events.length?p.events.map(e=>`<div class="ptl${EV_WARN.has(e.type)?' warn':''}"><span class="pt-time" title="${escapeHtml(e.at)}">${rel(e)}</span><span class="pt-type">${escapeHtml(EV_LABEL[e.type]||e.type)}</span><span>${escapeHtml(e.description)}</span></div>`).join(''):'<p class="muted">No events recorded.</p>'}</div></details>
+<h3 style="margin-top:26px">Screenshots</h3><p id="shotInfo" class="muted small">Loading screenshots…</p>
+<div class="shot-tools" id="shotTools"><div><label for="shotSort">Order</label><select id="shotSort"><option value="asc">Oldest first</option><option value="desc">Newest first</option></select></div><div><label for="shotFrom">From minute</label><input id="shotFrom" type="number" min="0" step="1" inputmode="numeric" autocomplete="off"></div><div><label for="shotTo">To minute</label><input id="shotTo" type="number" min="0" step="1" inputmode="numeric" autocomplete="off"></div></div>
+<div id="shotGrid" class="shot-grid"></div></div>`;
+ loadGallery(r);
+}
+async function loadGallery(r){
+ const token=++galleryToken,id=r.proctoring.attemptId;let shots=[];
+ try{shots=(await getShots(id)).filter(x=>x.attemptId===id&&x.attemptId===r.id&&x.blob).sort((a,b)=>a.seq-b.seq);}catch{}
+ if(token!==galleryToken||role!=='admin')return;
+ gallery={r,shots,urls:[],map:new Map(),view:[],i:0};renderGrid();
+}
+function renderGrid(){
+ const g=gallery;if(!g)return;
+ const from=parseFloat($('shotFrom').value),to=parseFloat($('shotTo').value),p=g.r.proctoring;
+ let v=g.shots.filter(x=>(isNaN(from)||x.elapsedSec>=from*60)&&(isNaN(to)||x.elapsedSec<(to+1)*60));
+ if($('shotSort').value==='desc')v=v.slice().reverse();
+ g.view=v;
+ for(const x of v)if(!g.map.has(x.seq)){const u=URL.createObjectURL(x.blob);g.map.set(x.seq,u);g.urls.push(u);}
+ $('shotInfo').textContent=g.shots.length?`${v.length} of ${g.shots.length} screenshots shown · captured every ${PROCTOR.SHOT_MS/1000} seconds · select one to enlarge.`:p.screenshots?`The summary lists ${p.screenshots} screenshots, but their images are not stored in this browser. Import the scholar’s “Export report for admin” file in the browser you review reports in.`:'No screenshots were captured for this attempt.';
+ $('shotGrid').innerHTML=v.map(x=>`<button type="button" class="shot" data-shot="${x.seq}" aria-label="Screenshot ${x.seq}, ${fmtClock(x.elapsedSec)} into the exam, ${escapeHtml(p.studentName||g.r.candidate)}"><img src="${g.map.get(x.seq)}" alt="" loading="lazy"><span>#${x.seq} · [${fmtClock(x.elapsedSec)}]</span></button>`).join('');
+}
+function showShot(i){
+ const g=gallery;if(!g||!g.view.length)return;
+ i=(i+g.view.length)%g.view.length;g.i=i;
+ const x=g.view[i],p=g.r.proctoring;
+ $('shotTitle').textContent=`Screenshot #${x.seq} of ${g.shots.length} · [${fmtClock(x.elapsedSec)}]`;
+ $('shotImg').src=g.map.get(x.seq);$('shotImg').alt=`Screen of ${p.studentName||g.r.candidate} at ${fmtClock(x.elapsedSec)} into the exam`;
+ $('shotMeta').innerHTML=`Student: <strong>${escapeHtml(p.studentName||g.r.candidate)}</strong>${p.studentId?' ('+escapeHtml(p.studentId)+')':''} · Exam: ${escapeHtml(g.r.subject)} (${escapeHtml(p.examId)}) · Attempt: ${escapeHtml(p.attemptId)}<br>Captured ${escapeHtml(new Intl.DateTimeFormat(undefined,{dateStyle:'medium',timeStyle:'medium'}).format(new Date(x.takenAt)))} · ${x.width}×${x.height}`;
+}
+function proctorBind(){
+ $('camButton').addEventListener('click',enableCamera);$('screenButton').addEventListener('click',shareScreen);
+ $('reshareButton').addEventListener('click',shareScreen);$('restartCamButton').addEventListener('click',restartCamera);
+ $('proctorConsent').addEventListener('change',()=>{setupError('');proctorSyncSetup();});
+ $('proctoringSection').addEventListener('click',e=>{const b=e.target.closest('button[data-shot]');if(!b||!gallery||role!=='admin')return;const i=gallery.view.findIndex(x=>x.seq===Number(b.dataset.shot));if(i>=0){showShot(i);$('shotDialog').showModal();}});
+ $('proctoringSection').addEventListener('input',e=>{if(e.target.closest('#shotTools'))renderGrid();});
+ $('shotClose').addEventListener('click',()=>$('shotDialog').close());
+ $('shotPrev').addEventListener('click',()=>gallery&&showShot(gallery.i-1));$('shotNext').addEventListener('click',()=>gallery&&showShot(gallery.i+1));
+ $('shotDialog').addEventListener('keydown',e=>{if(!gallery)return;if(e.key==='ArrowLeft'){e.preventDefault();showShot(gallery.i-1);}else if(e.key==='ArrowRight'){e.preventDefault();showShot(gallery.i+1);}});
+ document.addEventListener('visibilitychange',()=>{if(proc&&proc.running)logEvent(document.hidden?'tab_hidden':'tab_visible',document.hidden?'Exam tab or window was hidden or minimised':'Exam tab became visible again');});
+ document.addEventListener('fullscreenchange',()=>{if(proc&&proc.running&&!document.fullscreenElement)logEvent('fullscreen_exit','Student exited full-screen mode');});
+}
+/* ===================== end of online proctoring ===================== */
+// UI binding
+TEMPLATE=document.documentElement.outerHTML;
+try{const local=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');if(local&&local.appId===state.appId){const localConfig=validateConfig(local.config),reports=(local.reports||[]).map(validateReport);state={...state,config:Number(local.configUpdatedAt)>Number(state.configUpdatedAt)?localConfig:state.config,configUpdatedAt:Math.max(Number(local.configUpdatedAt)||0,Number(state.configUpdatedAt)||0),reports:mergeReports(state.reports,reports)};}if(!persist(state))storageNotice('Browser storage is unavailable. Export your changes and reports before closing this page.');}catch{storageNotice('Saved browser data could not be loaded. This page is using its embedded data. Export a copy to keep your work.');}
+setView('login');
+$('scholarForm').addEventListener('submit',e=>{e.preventDefault();const name=$('candidate').value.trim();if(!name){$('candidate').setCustomValidity('Enter your name.');$('candidate').reportValidity();return;}role='scholar';scholar={name,id:$('candidateId').value.trim()};showSetup();});$('candidate').addEventListener('input',()=>$('candidate').setCustomValidity(''));
+$('adminLoginForm').addEventListener('submit',e=>{e.preventDefault();if(!isAdminPassword($('adminPassword').value)){$('loginError').textContent='Incorrect password. Try again.';$('loginError').hidden=false;$('adminPassword').focus();return;}role='admin';$('adminPassword').value='';$('loginError').hidden=true;renderAdmin();});
+$('logoutButton').addEventListener('click',logout);$('startButton').addEventListener('click',startTest);
+$('answer').addEventListener('input',()=>{$('answerError').hidden=true;saveAnswer();updateWords();});$('listenButton').addEventListener('click',listen);$('stopButton').addEventListener('click',()=>{if(recognition){try{recognition.stop();status('Finishing recording…');}catch{stopVoice();}}});
+$('nextButton').addEventListener('click',()=>advance());$('skipButton').addEventListener('click',()=>advance(true));$('backButton').addEventListener('click',()=>{if(index>0){saveAnswer();index--;showQuestion();}});$('questionMap').addEventListener('click',e=>{const b=e.target.closest('button[data-index]');if(b&&active){saveAnswer();index=Number(b.dataset.index);showQuestion();}});
+$('downloadButton').addEventListener('click',downloadReport);$('transferButton').addEventListener('click',async()=>{if(!currentReport)return;const payload={format:'interview-studio-report-v1',reports:[currentReport]};if(currentReport.proctoring){try{payload.proctoringShots=await exportShots(currentReport.proctoring.attemptId);}catch{$('savedMessage').textContent='Proctoring screenshots could not be read from this browser, so the export contains the report only.';}}saveFile(JSON.stringify(payload,null,2),'interview-report.json','application/json');});$('reportHtmlButton').addEventListener('click',()=>exportHtml(true));$('printButton').addEventListener('click',()=>{document.querySelectorAll('#summary details').forEach(d=>d.open=true);window.print();});$('expandButton').addEventListener('click',()=>{const ds=[...document.querySelectorAll('#summary details')],open=ds.some(d=>!d.open);ds.forEach(d=>d.open=open);$('expandButton').textContent=open?'Collapse all':'Expand all';});$('reportBackButton').addEventListener('click',()=>{if(role==='admin'){setView('admin');adminTab('reports');$('adminTitle').focus();}else showSetup();});
+$('questionsTab').addEventListener('click',()=>adminTab('questions'));$('reportsTab').addEventListener('click',()=>adminTab('reports'));
+$('questionForm').addEventListener('input',()=>draftDirty=true);
+$('addQuestionButton').addEventListener('click',()=>{if(role!=='admin')return;const draft=collectDraft();if(draft.questions.length>=200){message('A test can contain at most 200 questions.');return;}draft.questions.push({q:'',expected:'',keys:[]});renderEditor(draft);draftDirty=true;$('q'+(draft.questions.length-1)).focus();});
+$('questionEditor').addEventListener('click',e=>{const button=e.target.closest('button[data-remove]');if(!button||role!=='admin')return;const draft=collectDraft();if(draft.questions.length===1){message('Keep at least one question in the test.');return;}if(!window.confirm('Remove this question from the editor? Save the question set to apply the change.'))return;draft.questions.splice(Number(button.dataset.remove),1);renderEditor(draft);draftDirty=true;});
+$('questionForm').addEventListener('submit',e=>{e.preventDefault();if(role!=='admin')return;try{const config=validateConfig(collectDraft()),saved=persist({...state,config,configUpdatedAt:Date.now()});draftDirty=!saved;$('editorError').hidden=true;setView('admin');message(saved?'Question set saved. New tests will use these questions, expected answers, and keywords.':'Changes are available for this session, but browser storage failed. Export updated HTML to keep them.');}catch(err){$('editorError').textContent=err.message;$('editorError').hidden=false;}});
+$('reportList').addEventListener('click',e=>{const b=e.target.closest('button[data-report]');if(b&&role==='admin'){const r=state.reports.find(r=>r.id===b.dataset.report);if(r)renderReport(r);}});
+$('exportHtmlButton').addEventListener('click',()=>{if(draftDirty){message('Save the question set first so your exported HTML includes your edits.');return;}exportHtml();message('HTML export requested. Keep the downloaded archive private; it contains expected answers and completed reports.');});
+$('importReports').addEventListener('change',async e=>{if(role!=='admin')return;const file=e.target.files[0];if(!file)return;try{if(file.size>250000000)throw new Error('Choose a report smaller than 250 MB.');const data=JSON.parse(await file.text());if(data.format!=='interview-studio-report-v1'||!Array.isArray(data.reports)||!data.reports.length)throw new Error('Choose a report exported by Interview Studio.');const reports=data.reports.map(validateReport),before=state.reports.length;if(role!=='admin')return;const saved=persist({...state,reports:mergeReports(state.reports,reports)});let shots=0;try{shots=await importShots(data.proctoringShots,reports);}catch{}renderReportList();message(`${state.reports.length-before} new report(s) imported.${shots?` ${shots} proctoring screenshot(s) imported.`:''}${saved?'':' Browser storage failed; export updated HTML to keep them.'}`);}catch(err){message('Import failed: '+err.message);}finally{e.target.value='';}});
+proctorBind();
+window.addEventListener('beforeunload',e=>{if(active||draftDirty){e.preventDefault();e.returnValue='';}});
+
+</script>
+</body></html>
